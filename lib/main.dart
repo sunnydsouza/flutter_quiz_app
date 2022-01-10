@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _quiz = [
     {
-      'question': 'What is your favorite color',
+      'question': 'What is your favorite color?',
       'options': [
         {'text': 'Red', 'score': 5},
         {'text': 'Green', 'score': 6},
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       ]
     },
     {
-      'question': 'What is your favorite day',
+      'question': 'What is your favorite day?',
       'options': [
         {'text': 'Monday', 'score': 2},
         {'text': 'Wednesday', 'score': 4},
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       ]
     },
     {
-      'question': 'What is your favorite snack',
+      'question': 'What is your favorite snack?',
       'options': [
         {'text': 'Bhel', 'score': 4},
         {'text': 'Fried chicken', 'score': 6},
@@ -46,9 +46,21 @@ class _MyAppState extends State<MyApp> {
   var _quizIndex = 0;
   int _totalScore = 0;
   void _answerQuestion(int score) {
-    _totalScore = _totalScore + score;
+    
     setState(() {
       _quizIndex = _quizIndex + 1;
+      _totalScore = _totalScore + score;
+    });
+    print('The score till now is :' + _totalScore.toString());
+
+    // print("Am the answer to your question");
+  }
+
+   void _resetQuiz() {
+    
+    setState(() {
+      _quizIndex = 0;
+      _totalScore = 0;
     });
     print('The score till now is :' + _totalScore.toString());
 
@@ -67,6 +79,6 @@ class _MyAppState extends State<MyApp> {
                     answerQuestion: _answerQuestion,
                     questions: _quiz,
                     questionIndex: _quizIndex)
-                : Results()));
+                : Results(_resetQuiz,_totalScore)));
   }
 }
