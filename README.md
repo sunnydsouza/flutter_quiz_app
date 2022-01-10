@@ -1,6 +1,10 @@
-# first_app
+# Sample quiz app
 
 A new Flutter project.
+
+Asks 3 questions (can be extended to more) and calculates a score based on the answers
+
+Works on iOS, Android, Web
 
 ## Getting Started
 
